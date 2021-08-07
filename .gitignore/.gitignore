@@ -1,5 +1,81 @@
-#read and print the excel files
+#read and print the excel file
 import pandas as pd 
 df_excel=pd.read_excel('filename.xlsx')
 print(df_excel)
+
+#read excel by skipping few rows
+df = pd.read_excel('filename.xlsx', skiprows = 20)
+
+#specify the files location (or path)
+excel_files = ['files path here']
+
+#create a blank dataframe
+df = pd.DataFrame()
+
+#loop through every file in the list
+for file in excel_files:
+  #read files into a dataframe and skip the first row (header)
+  df = pd.read_excel(file, skiprows = 1)
+  #append results to merge
+  merge = merge.append(df, ignore_index = True)
+
+#create final workbook with merged results
+merge.to_excel('Merged_Files.xlsx')
+
+#to specify the column names as required
+df.columns=['name','address','phone number','state','country']
+
+# chech the columns present in data frame
+print(df.columns)
+
+# find data type of each column
+df.dtypes
+
+#Print particular column value
+print(df['name'])
+
+#print more than 1 column values
+print(df['name','phone number'])
+
+#print only limited number of row values in a column using slicing method
+print(df['name'][0:5])
+
+#print particular row value as rows are automatically indexed in pandas
+print(df.iloc[1])
+
+
+# print particular value using column and row indexs
+print(df.iloc[2:1])
+
+# take few columns from the existing file and store it in new file
+wanted_values=df[['name','phone number']]
+store=wanted_values.to_excel('basic details.xlsx')
+
+#remove few colums in existing dataframe 
+to_drop['address','country']
+df.drop(columns=to_drop,inplace=true)
+#print the particular column value by comparing with other column value 
+print(df.loc[df['state']=='karnataka'])
+
+#for 2 condition i.e filtering more
+print(df.loc[(df['state]=='karnataka') & (df['country']=='india')])
+
+#inser a column at a particular location with some header & fill with some value
+df.insert(3, "column name", np.nan)
+
+#drop
+df.drop_duplicates()
+
+#group By
+df.groupby(by=["b"]).sum()
+
+
+
+
+
+
+
+
+
+
 
